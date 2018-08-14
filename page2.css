@@ -3,7 +3,7 @@
 	width: 1175px;
 	margin: auto;
 	box-shadow: 10px 10px 5px #333;
-  background-color: #F6C88B;
+  background-color: #36FF00;
 }
 
 /*  #F6C88B   light tan  
@@ -12,7 +12,7 @@
 */
 body
 {
-	background-color: #E3AB67;
+	background-color: #36FF00;
 }
 
 #header_title {
@@ -23,7 +23,7 @@ body
   text-align: center; 
   color: #FFF; 
   font-weight: bold;
-  background-color: #F6C88B;
+  background-color: #36FF00;
   padding: 35px;
   margin: 0;
   border-top-left-radius: 9px;
