@@ -9,7 +9,7 @@
         width: 1225px;
         margin: auto;
         box-shadow: 10px 10px 5px #333;
-        background-color: #F6C88B;
+        background-color: #36FF00;
         border-radius: 5px;
     }
     #inner_container {
@@ -21,14 +21,14 @@
         #C67F45   brown   
     */
     body {
-        background-color: #E3AB67;
+        background-color: #36FF00;
     }
     #left_side {
         float: left;
         font-size: 26px;
         text-align: center;
         width: 270px;
-        background-color: #F6C88B;
+        background-color: #36FF00;
         padding: 15px;
         padding-top: 20px;
         margin: 0;
@@ -41,7 +41,7 @@
         text-align: center;
         padding: 15px;
         width: 220px;
-        background-color: #F6C88B;
+        background-color: #36FF00;
         height: 520px;
         font-size: 26px;
     }
@@ -163,7 +163,7 @@
         width: 800px;
         margin: auto;
         box-shadow: 10px 10px 5px #333;
-        background-color: #F6C88B;
+        background-color: #36FF00;
         border-radius: 5px;
     }
     .gyminfo-title {
