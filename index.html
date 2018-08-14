@@ -1,0 +1,262 @@
+<!-- Copyright © 2018 All rights reserved. -->
+<!doctype html>
+<!-- <meta name="viewport" content="user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"> -->
+<meta name="viewport" content="width=device-width, initial-scale=2.0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<html ng-app="courttimes">
+
+<head>
+    <meta name="keywords" content="Court Times reservation gym basketball tennis volleyball sports soccer Arizona Phoenix Scottsdale Gilbert Tempe Cave Creek info">
+    <meta name="description" content="Court Times gym information directory">
+    <meta name="ROBOTS" content="INDEX , FOLLOW">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0" />
+    <title>Court Times</title>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>  -->
+    <script src="angular/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+    <script src="controllers/maincontroller.js"></script>
+    <script src="services/ItemService.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSrvzdFu-8B2bJWlkozZ-RMjoqTG8YxmA&v=3.exp&sensor=false"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css">
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="page3.css" type="text/css">
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#calendar").datepicker("show");
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <div id="container" ng-controller="MainController">
+        <div id="inner_container">
+            <div id="banner">
+                <div id="logo-holder">
+                    <img src="Courttimes Banner.png" class="banner-img" />
+                </div>
+                <div id="slogan">{{sloganText}}</div>
+            </div>
+            <div id="left_side">
+                <span class="instruction">Click on a basketball icon on the map to see more info about that gym.</span><br>
+                <div id="left-lower-panel">
+                    <u>Search:</u>
+                    <input placeholder="Search by city or name" text="text" class="search-box" ng-change="searchUpdated()" ng-model="searchText" />
+                    <ul class="pricing-statement">
+                        <li>Prices range from $60 to $90 per hour</li>
+                        <li>Individual prices may vary</li>
+                    </ul>
+                    <span ng-repeat="result in searchResults track by $index">
+				  	<a href="" ng-click="setCenter($index)">{{result}}</a><br>
+				  </span>
+                </div>
+
+            </div>
+
+            <div id="middle">
+                Localized Map
+            </div>
+
+            <div id="right_side">
+                <div id="right-top-panel">
+                    <button style="font-size: 18px"><a href="login.html">Login</a>
+		    		</button>
+                    <br> Browse through {{gymCount}} gyms in and around the valley to find the best fit for your team.
+                </div>
+                <div id="right-lower-panel" ng-bind-html="leftLowerPanelContent">
+                </div>
+
+            </div>
+
+            <div id="footer">
+                {{footerContent}}
+            </div>
+            <div style="width: 100%; text-align: center;">
+                <a href="privacy.html" target="_blank">Terms and Conditions</a>
+            </div>
+            <!-- Gym info popup -->
+            <div ng-if="gyminfo.showingPopup" class="gym-info-popup" ng-style="{'top':posy + 'px'}">
+                <div class="gyminfo-title orange-background">
+                    &nbsp;{{gym.title}}
+                    <a class="close-reveal-modal popup-close" ng-click="closeGyminfoPopup();">&#215;</a>
+                </div>
+                <img id="gym_pic" ng-src="{{gym.pic}}" />
+                <div id="gym_desc">
+                    {{gym.address}}<br> {{gym.city}},&nbsp;{{gym.zip}}
+                    <br> {{gym.phone}}
+                    <br>
+                    <span ng-if="gym.price > 0">Price: {{gym.price | currency}} per one hour block.</span>
+
+                    <div ng-if="gym.signedup">
+                        {{gym.desc}}
+                    </div>
+                    <div ng-if="!gym.signedup">
+                        Online reservations are currently unavailable for this gym.
+                    </div>
+                </div>
+                <br>
+                <div id="controls">
+                    <div ng-if="lockedOut">
+                        <p style="font-size: 20px; color: red">
+                            This gym already is already being reserved for that date.<br> Please try again in a few minutes...
+                        </p>
+                    </div>
+                    <div ng-if="showControls && gym.signedup && !lockedOut">
+                        Pick a date to begin your reservation:
+                        <br>
+                        <input id="calendar" type="text" ui-date-format="yy-mm-dd" ng-model="gyminfo.startDate" ui-date="dateOptions" autofocus/>
+
+                        <br>
+                        <div ng-if="showConfirmButtons">
+                            <button type="submit" class="button small radius" ng-click="gyminfoConfirm(true, gym.price);">Continue</button>
+                            <button type="submit" class="button small radius button-spacing" ng-click="gyminfoConfirm(false);">Cancel</button>
+                        </div>
+                    </div>
+                    <div ng-if="showCloseButton || !gym.signedup">
+                        <br><br>
+                        <button type="submit" class="button small radius" ng-click="closeGyminfoPopup();">Close</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Reservation info popup -->
+            <div ng-if="reservationinfo.showingPopup" class="reservation-info-popup" ng-style="{'top':posyReservation + 'px'}">
+                <div class="gyminfo-title orange-background">
+                    &nbsp;{{gymName}} Reservation Form
+                    <a class="close-reveal-modal popup-close" ng-click="closeReservationPopup();">&#215;</a>
+                </div>
+                <br>
+
+                <p ng-if="lockedOut" style="font-size: 20px; color: red;">
+                    This gym is currently taking another reservation for this same day.<br> Please try again in a few minutes.
+                </p>
+                <div ng-if="!lockedOut">
+                    <span>Name:<span style="color:red">*</span></span>
+                    <input type="text" ng-model="reservationinfo.name" title="Reserving Person's name" maxwidth="50" style="width: 190px;" ng-change="checkFormFieldsValid();" />
+                    <span>Team Name (optional):</span>
+                    <input type="text" ng-model="reservationinfo.teamName" title="Team Name" maxwidth="50" style="width: 190px;" />
+                    <br><br>
+                    <span>Email:<span style="color:red">*</span></span>
+                    <input type="text" ng-model="reservationinfo.email" title="Reserving Person's Email" maxwidth="50" style="width: 190px;" ng-change="checkFormFieldsValid();" />
+                    <span>Phone:<span style="color:red">*</span></span>
+                    <input type="text" ng-model="reservationinfo.phone" title="Reserving Person's Phone" maxwidth="12" style="width: 190px; margin-left: 90px;" ng-change="checkFormFieldsValid();" />
+                    <br><br>
+                    <span>Available time slots for {{gyminfo.startDate}}:</span>
+                    <div id="time-list" ng-if="!finalpayment && !committed">
+                        <table>
+                            <thead style="color: white;">
+                                <tr style="background-color: #444; ">
+                                    <th width="120">Select</th>
+                                    <th width="120">Block start</th>
+                                    <th width="120">Block End</th>
+                                    <th width="120">Available?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="slot in gyminfo.timeblocks" ng-class="{avail: slot.available == 'yes', reserved: slot.available == 'no'}">
+                                    <td style="text-align: center;"><input type="checkbox" ng-model="slot.selected" ng-disabled="slot.available == 'no'" ng-click="selectClick(slot.selected)" /></td>
+                                    <td>{{slot.start}}</td>
+                                    <td>{{slot.end}}</td>
+                                    <td>{{slot.available}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <span style="margin-left: 15px">
+		          Total Price: {{total | currency}}
+		        </span>
+                    <span style="margin-left: 15px">
+		        	<input type="checkbox" ng-model="reservationinfo.readTerms" ng-change="checkFormFieldsValid();"/>
+		        </span>
+                    <span style="margin-left: 5px">
+		        	I have read the terms and conditions.
+		        </span>
+                    <br>
+                    <span style="margin-left: 15px">
+	            Please complete your reservation within:  {{currentTimer}}
+	          </span>
+                    <br>
+                    <div id="confirm-buttons" ng-if="showConfirmButtons">
+                        <span title="test" ng-if="currentPrice > 0">
+			          <button ng-show="!committed && fields_valid" type="submit" class="button small radius" title="Reserve these time slots and continue to payment form" ng-click="reservationConfirm(true);">Reserve</button> 
+			        </span>
+                        <button ng-show="!committed" type="submit" class="button small radius button-spacing" ng-click="reservationConfirm(false);">Cancel</button>
+                        <p ng-show="committed">Submitting reservation info...</p>
+                    </div>
+                </div>
+                <div ng-if="finalpayment">
+                    <br>
+                    <br> You are almost done! Please click the button below and you will be redirected <br> to the payment page:
+                    <form ng-form-commit name="payForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_cart">
+                        <input type="hidden" name="upload" value="1">
+                        <input type="hidden" name="business" value="4RRADSA8FWUAG">
+                        <input type="hidden" name="item_name_1" value="Gym Reservation">
+                        <input type="hidden" name="amount_1" ng-attr-value="{{total}}">
+                        <input type="hidden" name="shipping_1" value="0.00">
+                        <!-- Was input with name="submit" -->
+                        <button type="button" border="0" type="submit" ng-click="finalfinal(payForm);" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif">
+						</button>
+                    </form>
+                    <br> To cancel a reservation, call (602)-739-0085 and request a cancellation within 24 hrs. of the reservation time. <br>
+                </div>
+
+            </div>
+            <!-- Reservation info popup -->
+
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function onBlur() {
+        document.location.reload(true);
+    };
+
+    function onFocus() {
+
+    };
+
+
+    // Set the name of the hidden property and the change event for visibility
+    var hidden, visibilityChange;
+    if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
+        hidden = "hidden";
+        visibilityChange = "visibilitychange";
+    } else if (typeof document.mozHidden !== "undefined") {
+        hidden = "mozHidden";
+        visibilityChange = "mozvisibilitychange";
+    } else if (typeof document.msHidden !== "undefined") {
+        hidden = "msHidden";
+        visibilityChange = "msvisibilitychange";
+    } else if (typeof document.webkitHidden !== "undefined") {
+        hidden = "webkitHidden";
+        visibilityChange = "webkitvisibilitychange";
+    }
+
+
+    // If the page is hidden, reload the page
+    function handleVisibilityChange() {
+        if (document[hidden]) {
+            onBlur();
+        }
+    }
+
+    // Warn if the browser doesn't support addEventListener or the Page Visibility API
+    if (typeof document.addEventListener === "undefined" ||
+        typeof document[hidden] === "undefined") {
+        alert("This website requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.");
+    } else {
+        // Handle page visibility change   
+        document.addEventListener(visibilityChange, handleVisibilityChange, false);
+
+    }
+</script>
+
+</html>
