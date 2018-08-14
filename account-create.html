@@ -1,0 +1,14 @@
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h3 id="modalTitle">Create a new account</h3>
+  <p><input type="text" ng-model="userName" class="modal-input"/>Email Address</p>
+  <p>
+    <input type="password" ng-model="userPwd" class="modal-input"/>Password (minimum 6 characters)
+    <input type="password" ng-model="userPwdConfirm" class="modal-input"/>Confirm
+  </p>
+  <div ng-show="userPwdConfirm.length > 0 && userPwd != userPwdConfirm" style="color: red;">Password and Confirm must match</div>
+  <div ng-show="lengthError" style="color: red;">Password must each be 6 characters or more.</div>
+  <div ng-show="duplicateError" style="color: red;">Email is already in use, please try another.</div>    
+  <p><a ng-disabled="!pass()" ng-click="confirmAccount();"class="button postfix" style="width: 10rem;">Create Account</a></p>
+
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

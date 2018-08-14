@@ -1,0 +1,649 @@
+/****
+  ***
+  Large size devices, such as desktop monitors, show side-by-side tiling
+  ***
+  ***/
+
+@media (min-width: 1200px) {
+    #container {
+        width: 1225px;
+        margin: auto;
+        box-shadow: 10px 10px 5px #333;
+        background-color: #F6C88B;
+        border-radius: 5px;
+    }
+    #inner_container {
+        width: 1223px;
+        position: relative;
+    }
+    /*  #F6C88B   light tan  
+        #E3AB67   medium tan  
+        #C67F45   brown   
+    */
+    body {
+        background-color: #E3AB67;
+    }
+    #left_side {
+        float: left;
+        font-size: 26px;
+        text-align: center;
+        width: 270px;
+        background-color: #F6C88B;
+        padding: 15px;
+        padding-top: 20px;
+        margin: 0;
+        height: 520px;
+        border-top-left-radius: 9px;
+        border-top-right-radius: 9px;
+    }
+    #right_side {
+        display: inline-block;
+        text-align: center;
+        padding: 15px;
+        width: 220px;
+        background-color: #F6C88B;
+        height: 520px;
+        font-size: 26px;
+    }
+    .instruction {
+        font-size: 20px;
+    }
+    .pricing-statement {
+        margin: 3px;
+        font-size: 16px;
+    }
+    #middle {
+        float: left;
+        width: 750px;
+        padding: 15px;
+        padding-top: 30px;
+        height: 490px;
+        box-shadow: 10px 10px 5px #777;
+        border: 1px solid #666;
+        border-radius: 12px;
+        background-color: #DDD;
+    }
+    #slogan {
+        width: 800px;
+        margin: 0 auto;
+        height: 30px;
+        font-size: 22px;
+        /*border: 2px solid red;*/
+        text-align: center;
+    }
+    #banner {
+        /*background-color: #CCCCCC;*/
+        width: 1225px;
+        height: 136px;
+        border-radius: 5px;
+        margin-bottom: 12px;
+        /*border-bottom: 1px solid black;*/
+    }
+    #logo-holder {
+        width: 1223px;
+        height: 100px;
+        overflow: hidden;
+    }
+    .banner-img {
+        width: 800px;
+        margin-top: 10px;
+        margin-left: 165px;
+    }
+    #right-top-panel {
+        width: 250px;
+        font-size: 20px;
+        height: 95px;
+        padding-top: 15px;
+        /*border: 2px solid red;*/
+    }
+    #right-lower-panel {
+        display: none;
+        width: 150px;
+        font-size: 20px;
+        height: 395px;
+        overflow-y: scroll;
+        background-color: #EEE;
+        padding: 8px;
+        border-radius: 8px;
+        box-shadow: 10px 10px 5px #333;
+        border: 1px solid black;
+    }
+    #right-lower-panel::-webkit-scrollbar {
+        display: none;
+    }
+    #calendar {
+        margin-right: 8px;
+        margin-top: 240px;
+    }
+    #gymkeyinput {
+        width: 140px;
+    }
+    #left-lower-panel {
+        width: 245px;
+        font-size: 20px;
+        height: 390px;
+        overflow-y: scroll;
+        background-color: #EEE;
+        padding: 10px;
+        margin-top: 26px;
+        border-radius: 8px;
+        box-shadow: 10px 10px 5px #333;
+        border: 1px solid black;
+        text-align: left;
+    }
+    .search-box {
+        width: 130px;
+        height: 20px;
+    }
+    .gyminfo-title {
+        height: 20px;
+        font-size: 18px;
+        padding-top: 4px;
+        margin-bottom: 4px;
+    }
+    #footer {
+        width: 1220px;
+        font-size: 20px;
+        height: 50px;
+        /*border: 2px solid red;*/
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
+
+/****
+  ***
+  Medium size devices, show vertical format
+  ***    was 645
+  ***/
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+    #container {
+        width: 800px;
+        margin: auto;
+        box-shadow: 10px 10px 5px #333;
+        background-color: #F6C88B;
+        border-radius: 5px;
+    }
+    .gyminfo-title {
+        height: 20px;
+        font-size: 18px;
+        padding-top: 4px;
+        margin-bottom: 4px;
+    }
+    #inner_container {
+        width: 798px;
+        position: relative;
+    }
+    body {
+        background-color: #E3AB67;
+    }
+    #left_side {
+        display: inline-table;
+        float: left;
+        font-size: 26px;
+        text-align: center;
+        width: 770px;
+        background-color: #F6C88B;
+        padding: 15px;
+        padding-top: 20px;
+        margin: 0;
+        height: 200px;
+        border-top-left-radius: 9px;
+        border-top-right-radius: 9px;
+    }
+    .search-box {
+        width: 160px;
+        margin-right: 500px;
+        height: 20px;
+    }
+    #right_side {
+        display: inline-table;
+        display: inline-block;
+        text-align: center;
+        padding: 15px;
+        width: 770px;
+        background-color: #F6C88B;
+        height: 200px;
+        font-size: 26px;
+    }
+    .pricing-statement {
+        margin: 3px;
+        font-size: 16px;
+    }
+    #middle {
+        float: left;
+        width: 750px;
+        height: 420px;
+        padding: 15px;
+        margin-top: 10px;
+        margin-left: 70px;
+        padding-top: 30px;
+        box-shadow: 10px 10px 5px #777;
+        border: 1px solid #666;
+        border-radius: 12px;
+        background-color: #DDD;
+    }
+    #banner {
+        /*background-color: #CCCCCC;*/
+        width: 800px;
+        height: 136px;
+        border-radius: 5px;
+        margin-bottom: 12px;
+        /*border-bottom: 1px solid black;*/
+    }
+    #slogan {
+        width: 600px;
+        margin: 0 auto;
+        height: 30px;
+        font-size: 22px;
+        /*border: 2px solid red;*/
+        text-align: center;
+    }
+    #logo-holder {
+        width: 798px;
+        height: 100px;
+        overflow: hidden;
+    }
+    .banner-img {
+        width: 600px;
+        margin-top: 8px;
+        margin-left: 65px;
+    }
+    #right-top-panel {
+        width: 750px;
+        font-size: 20px;
+        height: 45px;
+        padding-top: 15px;
+        display: none;
+        /*border: 2px solid red;*/
+    }
+    #right-lower-panel {
+        display: none;
+        width: 740px;
+        font-size: 20px;
+        height: 195px;
+        overflow-y: scroll;
+        background-color: #EEE;
+        padding: 8px;
+        border-radius: 8px;
+        box-shadow: 10px 10px 5px #333;
+        border: 1px solid black;
+    }
+    #right-lower-panel::-webkit-scrollbar {
+        display: none;
+    }
+    .instruction {
+        font-size: 20px;
+    }
+    #left-lower-panel {
+        width: 740px;
+        font-size: 20px;
+        height: 190px;
+        overflow-y: scroll;
+        background-color: #EEE;
+        padding: 10px;
+        margin-top: 26px;
+        border-radius: 8px;
+        box-shadow: 10px 10px 5px #333;
+        border: 1px solid black;
+        text-align: left;
+    }
+    #footer {
+        width: 798px;
+        font-size: 20px;
+        height: 50px;
+        /*border: 2px solid red;*/
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 999px) {
+    #container {
+        width: 98%;
+        /* was 620 */
+        margin: auto;
+        box-shadow: 6px 6px 3px #333;
+        background-color: #F6C88B;
+        border-radius: 3px;
+        height: 1560px;
+    }
+    #inner_container {
+        width: 98%;
+        position: relative;
+        height: 1560px;
+    }
+    .gyminfo-title {
+        height: 30px;
+        font-size: 30px;
+        padding-top: 6px;
+        margin-bottom: 6px;
+    }
+    body {
+        background-color: #E3AB67;
+    }
+    #left_side {
+        display: inline-table;
+        float: left;
+        font-size: 42px;
+        text-align: center;
+        width: 100%;
+        /*590px;*/
+        background-color: #F6C88B;
+        padding: 10px;
+        padding-top: 10px;
+        margin: 0;
+        height: 200px;
+        border-top-left-radius: 9px;
+        border-top-right-radius: 9px;
+    }
+    .pricing-statement {
+        margin: 3px;
+        font-size: 26px;
+    }
+    .search-box {
+        width: 230px;
+        margin-right: 400px;
+        font-size: 30px;
+        height: 50px;
+    }
+    #right_side {
+        display: inline-table;
+        display: inline-block;
+        text-align: center;
+        padding: 12px;
+        width: 98%;
+        /*590px;*/
+        background-color: #F6C88B;
+        height: 340px;
+        font-size: 42px;
+    }
+    #middle {
+        float: left;
+        width: 98%;
+        /*585px;*/
+        height: 620px;
+        padding: 6px;
+        margin-top: 0px;
+        margin-left: 10px;
+        padding-top: 20px;
+        box-shadow: 10px 10px 5px #777;
+        border: 1px solid #666;
+        border-radius: 12px;
+        background-color: #DDD;
+    }
+    #banner {
+        /*background-color: #CCCCCC;*/
+        width: 98%;
+        /*590px;*/
+        height: 126px;
+        border-radius: 5px;
+        /*margin-bottom: 4px;*/
+        /*border-bottom: 1px solid black;*/
+    }
+    #slogan {
+        display: none;
+        width: 60%;
+        /*480px;*/
+        margin: 0 auto;
+        height: 60px;
+        font-size: 38px;
+        /*border: 2px solid red;*/
+        text-align: center;
+    }
+    .instruction {
+        display: none;
+        font-size: 36px;
+    }
+    #logo-holder {
+        width: 98%;
+        /*590px; */
+        height: 110px;
+        overflow: hidden;
+    }
+    .banner-img {
+        width: 800px;
+        margin-top: 10px;
+        margin-left: 70px;
+    }
+    #right-top-panel {
+        width: 98%;
+        /*590px;*/
+        font-size: 36px;
+        height: 65px;
+        padding-top: 15px;
+        display: none;
+        /*border: 2px solid red;*/
+    }
+    #right-lower-panel {
+        display: none;
+        width: 100%;
+        /*590px;*/
+        font-size: 36px;
+        height: 340px;
+        overflow-y: scroll;
+        background-color: #EEE;
+        padding: 6px;
+        border-radius: 5px;
+        box-shadow: 6px 6px 3px #333;
+        border: 1px solid black;
+    }
+    #right-lower-panel::-webkit-scrollbar {
+        display: none;
+    }
+    #left-lower-panel {
+        width: 98%;
+        /*585px;*/
+        font-size: 36px;
+        height: 250px;
+        overflow-y: scroll;
+        background-color: #EEE;
+        padding: 7px;
+        margin-top: 8px;
+        border-radius: 5px;
+        box-shadow: 6px 6px 3px #333;
+        border: 1px solid black;
+        text-align: left;
+    }
+    #footer {
+        width: 98%;
+        /*590px;*/
+        font-size: 36px;
+        height: 70px;
+        /*border: 2px solid red;*/
+        text-align: center;
+        margin-top: 4px;
+    }
+    .gym-info-popup {
+        height: 350px;
+        width: 750px !important;
+        font-size: 36px !important;
+    }
+    #gym_desc {
+        height: 165px !important;
+        width: 340px !important;
+        font-size: 33px !important;
+    }
+    #gym_pic {
+        margin-top: 17px !important;
+        height: 230px !important;
+        width: 340px !important;
+    }
+}
+
+
+/****
+  ***
+  Main CSS
+  ***
+  ***/
+
+#left-lower-panel a {
+    text-decoration: none;
+    color: black;
+}
+
+u {
+    text-decoration: underline;
+}
+
+input short_input {
+    width: 70%;
+}
+
+.shaded-table {
+    padding-bottom: 8px;
+    background-color: white;
+    border-spacing: 4px 4px;
+}
+
+.shaded-table tr:nth-child(even) {
+    background: #CCC;
+    padding-bottom: 4px;
+}
+
+;
+.shaded-table tr:nth-child(odd) {
+    background: #FFF;
+    padding-bottom: 4px;
+}
+
+;
+
+/*#left-lower-panel::-webkit-scrollbar {
+ display: none;
+}*/
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+#gym_pic {
+    margin-top: 20px;
+    float: left;
+    height: 200px;
+    width: 290px;
+}
+
+#gym_desc {
+    float: left;
+    height: 125px;
+    width: 300px;
+    margin-left: 12px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#controls {
+    float: left;
+    height: 125px;
+    width: 300px;
+    margin-left: 12px;
+    font-size: 16px;
+}
+
+.small {
+    height: 25px;
+    width: 75px;
+    background-color: #E3AB67;
+    border-radius: 4px;
+    margin-top: 6px;
+}
+
+.popup-close {
+    float: right;
+    color: black;
+    margin-right: 15px;
+    padding-bottom: 4px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.outer_container a {
+    color: #C67F45;
+    text-decoration: none;
+}
+
+.gym-info-popup {
+    position: absolute;
+    left: 50px;
+    background: #FEFEFE;
+    height: 290px;
+    width: 620px;
+    z-index: 25;
+    padding: 4px;
+    border: 1px solid #555;
+    font-size: 16px;
+}
+
+.orange-background {
+    background: #E3AB67;
+    color: black;
+    width: 100%;
+}
+
+.reservation-info-popup {
+    position: absolute;
+    left: 150px;
+    background: #FEFEFE;
+    height: 462px;
+    width: 720px;
+    z-index: 30;
+    padding: 4px;
+    border: 1px solid #555;
+    font-size: 18px;
+}
+
+.reservation-info-popup span {
+    margin-left: 20px;
+}
+
+.reservation-info-popup input {
+    font-size: 16px;
+}
+
+#time-list {
+    overflow-y: scroll;
+    width: 550px;
+    height: 200px;
+    border: 1px solid #AAA;
+    margin: 10px;
+}
+
+#time-list td {
+    text-align: center;
+}
+
+.avail {
+    background-color: LimeGreen;
+}
+
+.reserved {
+    background-color: #888;
+}
+
+#confirm-buttons {
+    margin-left: 30px;
+}
+
+.reservation-cancel-popup {
+    position: absolute;
+    left: 250px;
+    top: 150px;
+    background: #FEFEFE;
+    height: 190px;
+    width: 420px;
+    z-index: 25;
+    padding: 4px;
+    border: 1px solid #555;
+    font-size: 16px;
+}

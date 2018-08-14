@@ -1,0 +1,92 @@
+<!-- Copyright © 2016  All rights reserved. -->
+<!doctype html>
+<html ng-app="courttimes">
+
+<head>
+    <link rel="SHORTCUT ICON" href="images/paw.ico">
+    <meta name="keywords" content="Scottsdale, Scottsdale City Council, Arizona politics,Scottsdale politics, Cindy, Hill">
+    <meta name="description" content="Cindy, Hill, City Council, Scottsdale, Arizona ">
+    <meta name="ROBOTS" content="INDEX , FOLLOW">
+    <title>Court Times</title>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+    <script src="controllers/maincontroller.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css">
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="page3.css" type="text/css">
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#calendar").datepicker("show");
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <div id="container" ng-controller="MainController">
+        <div id="inner_container">
+            <img src="Courttimes Banner.png" width="800px" style="margin-top:10px; margin-left: 165px;" />
+
+            <div id="left_side">
+                <span style="font-size: 20px;">Left side content.<br>Legend, details, etc.</span><br>
+
+            </div>
+
+            <div id="middle">
+                Localized Map
+            </div>
+
+            <div id="right_side">
+                <span style="font-size: 20px;">Right side content.<br>Legend, details, etc.</span><br>
+
+            </div>
+
+            <!-- Gym info popup -->
+            <div ng-if="gyminfo.showingPopup" class="gym-info-popup" ng-style="{'top':posy + 'px'}">
+                <div class="gyminfo-title orange-background">
+                    &nbsp;{{gymName}}
+                    <a class="close-reveal-modal popup-close" ng-click="closeGyminfoPopup();">&#215;</a>
+                </div>
+                <img id="gym_pic" ng-src="{{gymPic}}" />
+                <div id="gym_desc">
+                    {{gymDescription}}
+                </div>
+                <p ng-if="!showConfirmButtons">
+                    <div ng-switch="submitting">
+                        <div ng-switch-when="1">
+                            <!-- <img src="/images/loading-1.gif">&nbsp;{{refundMessage}} -->
+                        </div>
+                        <div ng-switch-when="2">
+                            <!-- <img src="/images/success.gif">&nbsp;{{refundMessage}} -->
+                        </div>
+                        <div ng-switch-when="3">
+                            <!-- <img src="/images/no.png">&nbsp;{{refundMessage}} -->
+                        </div>
+                    </div>
+                </p>
+                <br>
+                <div id="controls">
+                    Pick a date to begin your reservation:
+                    <br>
+                    <input id="calendar" type="text" ui-date-format="yy-mm-dd" ng-model="ngModel" ui-date="dateOptions" />
+
+                    <br>
+                    <div ng-if="showConfirmButtons">
+                        <button type="submit" class="button small radius" ng-click="gyminfoConfirm(true);">Continue</button>
+                        <button type="submit" class="button small radius button-spacing" ng-click="gyminfoConfirm(false);">Cancel</button>
+                    </div>
+                    <div ng-if="showCloseButton">
+                        <button type="submit" class="button tiny radius" ng-click="closeGyminfoPopup();">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+#container 
+{
+	width: 1175px;
+	margin: auto;
+	box-shadow: 10px 10px 5px #333;
+  background-color: #F6C88B;
+}
+
+/*  #F6C88B   light tan  
+    #E3AB67   medium tan  
+    #C67F45   brown   
+*/
+body
+{
+	background-color: #E3AB67;
+}
+
+#header_title {
+  text-shadow: 6px 4px 3px rgba(30,114,255,0.9),
+             6px 8px 13px rgba(180,180,180,1),
+             8px 18px 23px rgba(50,50,50,0.7);
+  font-size: 36px; 
+  text-align: center; 
+  color: #FFF; 
+  font-weight: bold;
+  background-color: #F6C88B;
+  padding: 35px;
+  margin: 0;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+
+}
+
+.outer_container a {
+  color: #C67F45;
+  text-decoration: none;
+}
+
+.outer_container {
+  text-align:center; 
+  font-family: "Arial Black",  /* Windows, MacOS */ /* Fallback options */ helvetica,  /* Unix+X, MacOS */ sans-serif;
+  padding: 9px; 
+  margin-left: 140px;
+  background-color: #DDD; 
+  width: 820px;
+  border: 1px solid #666;
+  border-radius: 12px;
+  height: 250px;
+  font-size: 36px;
+  box-shadow: 10px 10px 5px #777;
+
+}
+
+.inner_container {
+  width: 94%;
+  margin: auto;
+  margin-top: 35px;
+  height: 100%;
+  background-color: #FDF5E6;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px #777;
+}
+
+
+.container2{
+	width:315px;
+	height:450px;
+	margin-bottom:25px;	
+	background-color: blue;
+	float: left;
+	margin: 9px;
+}
+
+#navigation
+{
+	float: left;
+	width: 100%;
+    background-image:url('menu_bar.png');
+    background-repeat:repeat-x;
+    background-size: 34px 45px;
+    border-radius: 3px;
+}
+
+#navigation ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+#navigation ul li
+{
+	list-style-type: none;
+	display: inline;
+}
+
+#navigation li a
+{
+	display: block;
+    float: left;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	border-right: 1px solid #fff;
+}
+
+#navigation li a:hover { background: #123EAB; }
+
+.big_red_title {
+  text-shadow: 3px 4px 3px rgba(0,0,0,0.4),
+             3px 8px 13px rgba(0,0,0,0.1),
+             3px 18px 23px rgba(0,0,0,0.1);
+  color:#C11B17; 
+  font-size: 28px;
+}
+
+.help_Cindy {
+  text-align: center; 
+  width: 1000px;
+}
+
+.portrait {
+  padding:8px;
+  border:solid;
+  border-color: #dddddd #aaaaaa #aaaaaa #dddddd;
+  border-width: 1px 2px 2px 1px;
+  background-color:white;
+  box-shadow: 5px 5px 3px #777;
+}
